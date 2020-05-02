@@ -1,0 +1,30 @@
+Em vez de usar esta funcao de evento:
+
+    $("#botao-reiniciar").on("click", function(){
+    console.log("botao clicado");
+})
+
+pode-se usar esta:
+
+     $("#botao-reiniciar").click(function(){
+    console.log("botao clicado");
+})
+
+##############################################################################################
+Para fazer com que, ao atualizar a pagina, recarregue todas as funcoes, pode se realizar isto:
+
+    $(document).ready(function(){
+        //colocar todas as funcoes que precisao ser realizadas.
+    })
+##############################################################################################
+Ha um jeito mais facil de se fazer o codigo acima:
+
+    $(function(){
+        //colocar todas as funcoes que precisao ser realizadas.
+    });
+
+##############################################################################################
+Assim, a função .attr() vai se comportar como uma outra função do jQuery, a .removeAttr(), 
+que tem como objetivo remover atributos de elementos. Um outro código que também conseguiria remover o attr seria o :
+
+    $(".post").removeAttr("disabled");

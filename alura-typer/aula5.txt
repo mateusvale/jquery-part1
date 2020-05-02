@@ -1,0 +1,70 @@
+Para mudar de cor de um elemento:
+
+    campo.css("background-color", "lightgray");
+
+Porem, como eh de praxe, ao mudar estilizacao precisamos utilizar o css. Logo, iremos 
+criar uma classe usando o seguinte codigo:
+
+    campo.addClass("campo-desativado");
+
+#####################################################################################
+
+Caso queiramos remover a classe, iremos utilizar a seguinte linha:
+
+    campo.removeClass("campo-desativado");
+
+#####################################################################################
+
+Caso nao queira precisar fazer com que adicione e depois remova a classe, pode-se utilizar
+a seguinte linha:
+
+    campo.toggleClass("campo-desativado");
+
+
+#####################################################################################
+Para pegar um valor da propriedade CSS, precisaremos realizar isso:
+
+    <div style="background-color:red; width=60px">CSS com jQuery</div>
+    var cor = $("div").css("background-color");
+
+Caso queira pegar mais de um valor, precisamos passa-los em um array, precisamos fazer
+o seguinte:
+
+    var valores = $("div").css(["background-color","width"]);
+
+Nesse caso, a variavel valores será um objeto.
+#####################################################################################
+
+ função substr:
+
+    var comparavel = frase.substr(0 , digitado.length);
+    if(digitado == comparavel) {
+        campo.addClass("borda-verde");
+    } else {
+        campo.addClass("borda-vermelha");
+    }
+
+Existe uma outra funcao que pode realizar essa mesma coisa. Ele devolve se eh true ou false:
+
+    var digitouCorreto = frase.startsWith(digitado);
+    if(digitouCorreto) {
+        campo.addClass("borda-verde");
+    } else {
+        campo.addClass("borda-vermelha");
+    }
+
+    ou melhor:
+
+    if( frase.startsWith(digitado)) {
+        campo.addClass("borda-verde");
+    } else {
+        campo.addClass("borda-vermelha");
+    }
+
+#####################################################################################
+
+O Materialize é uma framework front-end que auxilia muito a estilizar páginas, evitando 
+assim uma grande perda de tempo nessa tarefa. É útil para quem gostaria de seguir boas 
+práticas no mundo CSS para por exemplo criar uma página responsiva sem entrar em detalhes:
+
+                        http://materializecss.com/

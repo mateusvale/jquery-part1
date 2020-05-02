@@ -1,0 +1,34 @@
+Caso queira acontecer algo ao entrar em um local de digitacao, em vez de colocar click, o melhor eh utilizar o fucus.
+Eh melhor pois o usuario pode acessar o local utilizando a tecla tab.
+
+    campo.on("focus", function(){
+        //local de codigo
+    }
+
+####################################################################################################################
+Caso queira mudar algum parametro de uma tag, basta realizar o seguinte codigo:
+    campo.attr("disabled", true)
+
+####################################################################################################################
+Caso eu queira parar o cronometro quando chegar ate 0s, precisamos fazer o seguinte:
+
+    var cronometroID = setInterval(function(){
+
+            clearInterval(cronometroID);
+
+        },1000);
+
+#Nesse caso, eu tenho que criar uma variavel para realizar o setInterval.
+
+####################################################################################################################
+Caso eu queira que o evento aconteca apenas uma vez, em vez de realizar isto:
+
+    campo.on("focus", function(){
+        //local de codigo
+    }
+
+Iremos realizar isto:
+
+    campo.one("focus", function(){
+        //local de codigo
+    }

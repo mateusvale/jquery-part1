@@ -1,0 +1,28 @@
+Em vez de usar o addEventListenner com o click do mouse, pode-se usar o seguinte comando:
+
+    var campo = $(".campo-digitacao");
+    campo.on("click", function(){
+        /* codigo aqui */
+    })
+
+#########################################################################################
+Como pegar o valor do input do usuario da variavel campo? no JS puro, colocavamos por exemplo, campo.value.
+
+    Em jQuery, utilizamos campo.val();
+
+
+campo.text() pega o que esta escrito em uma tag, e o .val() o que esta escrito em um input
+
+#########################################################################################
+O nome do evento são os nomes do eventos comuns do Javascript, como de click, input, focus, dblclick entre outros.
+Em vez de usar o addEventListenner, quando se escreve algo no input (como os campos de <input>(todos os tipos), 
+<textarea> e <select>), pode-se usar o seguinte comando:
+
+    var campo = $(".campo-digitacao");
+    campo.on("input", function(){
+         /* codigo aqui */
+    })
+
+obs:O jQuery chama este evento input. No mundo JavaScript puro, sem jQuery, seria o oninput.
+
+
