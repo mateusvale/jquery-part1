@@ -1,28 +1,18 @@
-Em vez de usar o addEventListenner com o click do mouse, pode-se usar o seguinte comando:
+Para fazer um requisição AJAX, precisamos fazer o seguinte:
 
-    var campo = $(".campo-digitacao");
-    campo.on("click", function(){
-        /* codigo aqui */
-    })
+    function fraseAleatoria (){
+    $.get("http://localhost:3000/frases", function(data){
 
-#########################################################################################
-Como pegar o valor do input do usuario da variavel campo? no JS puro, colocavamos por exemplo, campo.value.
+        var frase = $(".frase");
+        var numeroAleatorio = Math.round(Math.random() * data.length);
+        frase.text(data[numeroAleatorio].texto);
+        atualizaTamanhoFrase();
+        atualizaTempoInicial (data[numeroAleatorio].tempo);
 
-    Em jQuery, utilizamos campo.val();
-
-
-campo.text() pega o que esta escrito em uma tag, e o .val() o que esta escrito em um input
-
-#########################################################################################
-O nome do evento são os nomes do eventos comuns do Javascript, como de click, input, focus, dblclick entre outros.
-Em vez de usar o addEventListenner, quando se escreve algo no input (como os campos de <input>(todos os tipos), 
-<textarea> e <select>), pode-se usar o seguinte comando:
-
-    var campo = $(".campo-digitacao");
-    campo.on("input", function(){
-         /* codigo aqui */
-    })
-
-obs:O jQuery chama este evento input. No mundo JavaScript puro, sem jQuery, seria o oninput.
+    });
 
 
+A funcao so sera realizada apos o retorno de dados em data.
+A variavel data eh o que sera retornado apos o get. Pode-se colocar qualquer nome, porem o que precisa saber eh que a funcao retorna um dado.
+
+#####################################################################################################

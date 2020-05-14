@@ -1,46 +1,111 @@
-Em vez de usar:
+Para mostrar e enconder um elemento, podemos usar as seguintes propriedades:
 
-    var frase = document.querySelector(".frase");
+    $(".placar").show();
 
-podemos utilizar:
+    $(".placar").hide();
 
-    var frase = jQuery("frase");
+        Porem, em vez de ficar utilizando os dois, podemos utilizar o seguinte comando:
+    
+    $(".placar").toggle();
+
+#################################################################################################################
+O codigo acima faz com que a transicao seja abrupta. Logo, para resolver isso, podemos utilizar os seguintes codigos:
+
+    $(".placar").slideDown();
+
+    $(".placar").slideUp();
+
+        Ou melhor, usar apenas este:
+
+    $(".placar").slideToggle();
+
+
+#################################################################################################################
+No css, para que nao se faça uma movimentacao para o lado ao apertar algum botao, eh preciso colocar isso no css:
+
+    body{
+    overflow: scroll;
+}
+
+#################################################################################################################
+Podemos fazer tbm um fadeIn e fadeOut em elementos. O problema eh que, ao usarmos um fadeout para remover um ele-
+mento, iremos precisar depois de acontecer o fadeOut, remover de fato. Porem lembre-se, o remove precisa ser feito
+depois de acabado o fade:
+
+        var linha = $(this).parent().parent();
+            linha.fadeOut();
+            setInterval(function(){
+                linha.remove();
+            },1000);
+        }
+
+    Obs: Pode-se usar tbm fadeIn ou entao o fadeToggle.
+
+
+    Ou posso utilizar isto:
+
+        $('li').dblclick(function() {
+
+            var $this = $(this);
+
+            $this.fadeOut(function() {
+                $this.remove();
+            })
+        });
+
+#################################################################################################################
+Esse stop() eh super importante na hora de realizar uma movimentacao da pagina apos um aperto de um botao.
+Com esse stop, quando apertamos o botao, ele sempre para a ultima movimentacao e realiza a nova. Isso vai prevenir
+de acontecer um problema caso o usuario aperte o botao de placar diversas vezes.
+
+    function mostraPlacar(){
+        $(".placar").stop().slideToggle();   //Esse toggle fara com que ele mostre (show) ou esconda(hide) um elemento.
+    }
+
+#################################################################################################################
+
+O jQuery possui a função is que permite consultar uma pseudo class. Toda vez que um elemento esta com display 
+diferente de none ele ganha a pseudo classe :visible . A função is retorna true caso o elemento esteja visível. 
+Se ele estiver visível, precisamos escondê-lo e isso é feito através da função hide. Para exibir o elemento, é 
+usada a função show.
+
+    No css: 
+
+        .invisivel {
+            display: none;
+        }
+
+    No HTML:
+
+        <button id="botao-promocao">Promoções</button>
+        <ul class="promocoes">
+            <li>Bermuda de algodão</li>
+            <li>Sandália de borracha</li>
+        </ul>
+        <script="jquery.js">
+
+    No Js:
+
+        $('#botao-promocao').click(function() {
+
+            var promocoes = $('.promocoes');
+            if(promocoes.is(':visible')) {
+
+                promocoes.hide();
+            } else {
+                promocoes.show();
+            }
+        });
 
         ou
 
-    var frase = $(".frase");
+        $('#botao-promocao').click(function() {
 
-##################################################################################################################
+            var promocoes = $('.promocoes');
+            if(promocoes.hasClass('invisivel')) {
 
-Para acessar o conteudo da frase, em vez de usar:
-
-var frase = $(".frase").text();
-
-    utilize
-
-var frase = $(".frase").text();
-
-    logo frase será igual ao texto da classe frase
-
-##################################################################################################################
-
-Como entao contar o numero de palavras em uma frase?
-    Para isso, precisamos dividir o conteudo quando tiver um espaco (" "). Logo, iremos precisar realizar isso:
-
-    var tamanhoFrase = frase.split(" "); # o parametro sera como sera feita a divisao
-
-        a variavel tamanhoFrase será um array com length de o numero de palavras da frase.
-
-##################################################################################################################
-A função .text() tem esta dupla função, nos retornar o valor textual do elemento caso seja chamada sem parâmetro ou
-alterar o valor de texto do elemento caso seja chamada com uma string como parâmetro.
-
-
-
-A funcao jQuery retorna o valor textual do elemento:
-    var frase = $(".frase").text();
-
-e altera o valor de texto do elemento:
-
-    var frase = $(".frase")
-    frase.text("oi");   #a classe .frase agora esta escrito nela um "oi"
+                promocoes.removeClass('invisivel');
+            } else {
+                promocoes.addClass('invisivel');
+            }
+        });

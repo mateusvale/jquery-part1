@@ -1,3 +1,11 @@
+$("#botao-placar").click(mostraPlacar);
+
+function mostraPlacar(){
+    $(".placar").stop().slideToggle();   //Esse toggle fara com que ele mostre (show) ou esconda(hide) um elemento.
+}
+
+//##############################################################################################
+//Essa funcao serve para criar o placar.
 function inserePlacar(){
     var corpoTabela = $(".placar").find("tbody");
     var usuario = "Douglas";
@@ -7,10 +15,25 @@ function inserePlacar(){
     var linha = novaLinha(usuario,numPalavras);
     linha.find(".botao-remover").click(removeLinha);
     corpoTabela.append(linha);
+    $(".placar").slideDown();
+    scrollPlacar();
 }
 
-//########################################################################
+//##############################################################################################
+// Essa funcao serve para quando se acabar uma rodada, o scroll vai automaticamente no placar.
+function scrollPlacar(){
+    var posicaoPlacar = $(".placar").offset().top; //esse offset medira o tamanha do placar ate o topo da pagina
+    $("body").animate(
+        {
+            scrollTop: posicaoPlacar+"px"
 
+        },1000);
+}
+
+
+
+//##############################################################################################
+// Essa funcao serve para criar uma nova linha no placar ao acabar uma roda.
 function novaLinha(usuario,palavras){
     var linha = $("<tr>");
     var colunaUsuario = $("<td>").text(usuario);
@@ -34,12 +57,19 @@ function novaLinha(usuario,palavras){
     return linha;
 }
 
-//########################################################################
-
+//##############################################################################################
+//Essa funcao serve para remover uma linha. Ela sera usada apos o botao de lixeira ser apertado.
 function removeLinha(event){
     event.preventDefault();
-    $(this).parent().parent().remove();
+    
+    var linha = $(this).parent().parent();
+    linha.fadeOut(500, function (){
+        linha.remove()
+    });
 }
+
+//########################################################################
+
 
 
 

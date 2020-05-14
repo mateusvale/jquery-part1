@@ -1,34 +1,27 @@
-Caso queira acontecer algo ao entrar em um local de digitacao, em vez de colocar click, o melhor eh utilizar o fucus.
-Eh melhor pois o usuario pode acessar o local utilizando a tecla tab.
+Caso a requisitacao GET de problema, nos podemos fazer o seguinte:
 
-    campo.on("focus", function(){
+    $.get("http://localhost:3000/frases", trocaFraseAleatoria).fail(function(){
+
         //local de codigo
+
+    });
+
+############################################################################################
+Caso queiramos esconder algum elemento de nosso html, precisaremos ir no css e colocar isto:
+
+    #erro{
+        display: none;
     }
 
-####################################################################################################################
-Caso queira mudar algum parametro de uma tag, basta realizar o seguinte codigo:
-    campo.attr("disabled", true)
+Caso queiramos mostrar o elemento, podemos utilizar o seguinte codigo:
 
-####################################################################################################################
-Caso eu queira parar o cronometro quando chegar ate 0s, precisamos fazer o seguinte:
+    $("#erro").toggle();    
 
-    var cronometroID = setInterval(function(){
+#############################################################################################
 
-            clearInterval(cronometroID);
+Assim como a funcao fail, a gnt pode usar a funcao always. Ela fara com que a funcao colocada
+sempre sera utilizada.
 
-        },1000);
-
-#Nesse caso, eu tenho que criar uma variavel para realizar o setInterval.
-
-####################################################################################################################
-Caso eu queira que o evento aconteca apenas uma vez, em vez de realizar isto:
-
-    campo.on("focus", function(){
-        //local de codigo
-    }
-
-Iremos realizar isto:
-
-    campo.one("focus", function(){
-        //local de codigo
-    }
+    .always(function(){
+        $("#spinner").toggle();
+    });
