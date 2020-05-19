@@ -9,6 +9,14 @@ $(document).ready(function(){
     inicializaCronometro();
     $("#botao-reiniciar").click(reiniciaJogo);
     inicializaMarcadores();
+    atualizaPlacar();
+    $('#usuarios').selectize({
+        create: true,
+        sortField: 'text'
+    });
+    $(".tooltip").tooltipster({
+        trigger: "custom"
+    });
 })
 
 

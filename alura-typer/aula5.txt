@@ -1,0 +1,38 @@
+Como pegar todas as trs que sao filhas do tbody? Usando esse comando:
+
+    var linhas = $("tbody > tr");
+
+##########################################################################
+
+Para iterar em um array sem precisar verificar o tamanho, podemos utilizar
+o seguinte comando:
+
+    linhas.each(function(){
+        //Digite o comando aqui ...
+    });
+
+##########################################################################
+
+Para pegar o valor de uma tag usando o find, podemos utilizar isto:
+
+    linhas.each(function(){
+        var usuario = $(this).find("td:nth-child(1)").text();}
+
+    Esse this eh pq estamos utilizando o each em cada elemento do array linhas.
+    Colocamos tbm em $("") para que pudessemos utilizar essa tag. 
+    Utilizamos o find para achar o elemento que eh filha da tag do this e pegamos
+    a primeira filha td.
+
+##########################################################################
+
+Criacao de um objeto:
+
+    var xxxx = {
+        x1: usuario,
+        x2: palavra
+    };
+
+##########################################################################
+
+Em AJAX, ou a gnt envio uma string ou um objeto. Nao podemos enviar por exemplo
+um array.
